@@ -1,3 +1,7 @@
 FROM nginx:latest
 
-WORKDIR /the/workdir/path
+WORKDIR /app
+RUN apt-get update && \
+    apt-get install vim -y
+
+COPY html/ /usr/share/nginx/html
