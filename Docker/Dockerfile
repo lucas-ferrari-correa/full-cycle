@@ -1,7 +1,10 @@
-FROM nginx:latest
+FROM ubuntu:latest
 
-WORKDIR /app
-RUN apt-get update && \
-    apt-get install vim -y
+ENTRYPOINT [ "echo", "Hello" ]
+CMD [ "World" ]
 
-COPY html/ /usr/share/nginx/html
+# WORKDIR /app
+# RUN apt-get update && \
+#     apt-get install vim -y
+
+# COPY html/ /usr/share/nginx/html
