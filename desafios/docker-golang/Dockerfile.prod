@@ -1,0 +1,10 @@
+FROM golang:alpine AS builder
+
+
+WORKDIR /go/src/app
+COPY . .
+RUN go build -o /app app.go
+
+FROM scratch
+COPY --from=builder /app /app
+CMD [ "/app", "go", "run", "app.go" ]
