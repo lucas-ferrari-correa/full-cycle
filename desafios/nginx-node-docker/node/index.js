@@ -35,7 +35,7 @@ connection.query(selectTablePeople, (err, result, fields) => {
 connection.end;
 
 app.get('/', (req, res) => {
-  res.send(`<h1>${selectedName}</h1>`)
+  res.send(`<h1>Full Cycle Rocks!</h1><h1>${selectedName}</h1>`)
 });
 
 app.listen(port, () => {

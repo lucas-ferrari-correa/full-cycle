@@ -20,7 +20,7 @@ services:
     networks: 
       - laranet
     ports:
-      - "8080:80"
+      - "8081:80"
 
 networks:
   laranet:
