@@ -31,7 +31,7 @@ input NewCourse {
   categoryId: ID!
 }
 
-input NewCategory {
+input NewChapter {
   name: String!
   courseId: ID!
 }
