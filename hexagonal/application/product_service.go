@@ -12,3 +12,49 @@ func (s *ProductService) Get(id string) (ProductInteface, error) {
 
 	return product, nil
 }
+
+func (s *ProductService) Create(name string, price float64) (ProductInteface, error) {
+	product := NewProduct()
+	product.Name = name
+	product.Price = price
+
+	_, err := product.IsValid()
+	if err != nil {
+		return &Product{}, err
+	}
+
+	result, err := s.Persistence.Save(product)
+	if err != nil {
+		return &Product{}, err
+	}
+
+	return result, nil
+}
+
+func (s *ProductService) Enable(product ProductInteface) (ProductInteface, error) {
+	err := product.Enable()
+	if err != nil {
+		return &Product{}, err
+	}
+
+	result, err := s.Persistence.Save(product)
+	if err != nil {
+		return &Product{}, err
+	}
+
+	return result, nil
+}
+
+func (s *ProductService) Disable(product ProductInteface) (ProductInteface, error) {
+	err := product.Disable()
+	if err != nil {
+		return &Product{}, err
+	}
+
+	result, err := s.Persistence.Save(product)
+	if err != nil {
+		return &Product{}, err
+	}
+
+	return result, nil
+}
