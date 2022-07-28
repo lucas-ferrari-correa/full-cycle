@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - 50021:50021
+      - 8080:8080
+    volumes:
+      - .:/go/src
+  
