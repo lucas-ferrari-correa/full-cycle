@@ -34,15 +34,16 @@ describe("Unit test create product use case", () => {
     const productRepository = MockRepository();
     const productCreateUseCase = new CreateProductUseCase(productRepository);
 
-    input.type = "c";
+    const newInput = { ...input };
+    newInput.type = 'c';
 
-    await expect(productCreateUseCase.execute(input)).rejects.toThrow(
+    await expect(productCreateUseCase.execute(newInput)).rejects.toThrow(
       "Product type not supported"
     );
 
-    input.type = null;
+    newInput.type = null;
 
-    await expect(productCreateUseCase.execute(input)).rejects.toThrow(
+    await expect(productCreateUseCase.execute(newInput)).rejects.toThrow(
       "Product type not supported"
     );
   })
@@ -51,9 +52,10 @@ describe("Unit test create product use case", () => {
     const productRepository = MockRepository();
     const productCreateUseCase = new CreateProductUseCase(productRepository);
 
-    input.name = "";
+    const newInput = { ...input };
+    newInput.name = "";
 
-    await expect(productCreateUseCase.execute(input)).rejects.toThrow(
+    await expect(productCreateUseCase.execute(newInput)).rejects.toThrow(
       "Name is required"
     );
   })
@@ -62,16 +64,17 @@ describe("Unit test create product use case", () => {
     const productRepository = MockRepository();
     const productCreateUseCase = new CreateProductUseCase(productRepository);
 
-    input.price = 0;
+    const newInput = { ...input };
+    newInput.price = -1;
 
-    await expect(productCreateUseCase.execute(input)).rejects.toThrow(
-      "Price must be greater than zero"
+    await expect(productCreateUseCase.execute(newInput)).rejects.toThrow(
+      "Price must be greater or equal than zero"
     );
 
-    input.price = null;
+    newInput.price = null;
 
-    await expect(productCreateUseCase.execute(input)).rejects.toThrow(
-      "Price must be greater than zero"
+    await expect(productCreateUseCase.execute(newInput)).rejects.toThrow(
+      "Price must be greater or equal than zero"
     );
   })
 })
