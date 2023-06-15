@@ -6,7 +6,12 @@ const client = new Client({
   id: new Id("1"),
   name: "Client 1",
   email: "x@x.com",
-  address: "Address 1",
+  document: "0000",
+  street: "Rua",
+  number: "123",
+  complement: "complement",
+  city: "Cidade",
+  zipCode: "1111",
 })
 
 const MockRepository = () => {
@@ -31,7 +36,12 @@ describe("Find Client Usecase unit test", () => {
     expect(result.id).toEqual(input.id);
     expect(result.name).toEqual(client.name);
     expect(result.email).toEqual(client.email);
-    expect(result.address).toEqual(client.address);
+    expect(result.document).toBe(client.document);
+    expect(result.street).toBe(client.street);
+    expect(result.number).toBe(client.number);
+    expect(result.complement).toBe(client.complement);
+    expect(result.city).toBe(client.city);
+    expect(result.zipCode).toBe(client.zipCode);
     expect(result.createdAt).toEqual(client.createdAt);
     expect(result.updatedAt).toEqual(client.updatedAt);
   })
