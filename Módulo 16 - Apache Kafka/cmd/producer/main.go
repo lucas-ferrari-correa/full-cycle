@@ -28,7 +28,7 @@ func main() {
 
 func NewKafkaProducer() *kafka.Producer {
 	configMap := &kafka.ConfigMap{
-		"bootstrap.servers":  "mdulo16-apachekafka_kafka_1:9092",
+		"bootstrap.servers":  "mdulo16-apachekafka-kafka-1:9092",
 		"acks":               "all",
 		"enable.idempotence": "true",
 	}
